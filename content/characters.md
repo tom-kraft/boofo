@@ -12,7 +12,7 @@ Draw and color him as a puppy: eager, comic, and full of feeling.
 
 - **Proportions**: a puppy. The head is about a third to two-fifths of the body length. The barrel body is compact, the haunches are round and the four legs are short and sturdy.
 - **Head**: a rounded skull with a short, square muzzle that pushes forward. From the front, the white muzzle and cheeks make a wide peanut shape that puffs out past the brown of the head.
-- **Ears**: the thing everyone remembers. They are very long, strap-shaped and **solid black**, set high on the sides of the skull. When he sits, they hang to the floor. When he runs, they stream straight back, longer than his whole body. In a tumble they whip and knot over his face. Treat the ears as an extra limb that shows his mood: drooping means sad or worried, flying means speed or joy, tangled means chaos.
+- **Ears**: the thing everyone remembers. They are very long, strap-shaped and **solid black**, set high on the sides of the skull. When he sits, they hang to the floor. When he runs, they stream straight back, longer than his whole body. When he swims, they stretch out flat on the water to either side. In a tumble they whip and knot over his face. Treat the ears as an extra limb that shows his mood: drooping means sad or worried, flying means speed or joy, tangled means chaos.
 - **Crown tuft**: three to five spiky black ink strands on top of the head, between the ears.
 - **Eyes**: large upright ovals of bare paper, set close together at the top of the muzzle, with round black pupils. Black brow arcs float just above them and do most of the acting. Raised means joy or surprise. Pinched down toward the nose means anger. Tilted up in the middle means worry.
 - **Nose**: a rounded black button at the end of the muzzle, with a white glint.
@@ -63,7 +63,8 @@ Draw and color him as a puppy: eager, comic, and full of feeling.
 - *Sad, sitting* (page 27): head low, ears pooled on the floor, pupils looking up.
 - *Barking, angry* (page 13): brows pinched, teeth showing, braced on all fours.
 - *Curious, walking in profile* (page 25): nose forward, tail up, ears hanging.
-- *Running* (pages 25, 29 and 32): ears streaming straight back, body stretched, with ink speed lines.
+- *Swimming* (page 25): only his head above the water, ears stretched out flat to either side.
+- *Running* (pages 29 and 32): ears streaming straight back, body stretched, with ink speed lines.
 - *Tumbling* (page 12): legs splayed, pads showing, ears knotted over his face, tongue out.
 - *Busy helper* (page 28): standing on his hind legs with a hammer and brush in his mouth and a glue pot on his head.
 - *Asleep* (pages 7 and 35): eyes closed as curved lines, curled in a basket under a patchwork quilt.

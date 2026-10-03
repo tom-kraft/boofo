@@ -43,7 +43,7 @@ A bold black ink drawing comes first, colored with transparent marker and waterc
 
 ## Logo
 
-- The BOOFO wordmark is hand-lettered: chunky rounded capitals in `logo-red` with a heavy black outline and a ™. It sits in a flat `logo-yellow` rectangle with the subtitle under it. Use the artwork in the **Logo** group as supplied. Never retype it in a font.
+- The BOOFO wordmark is hand-lettered: chunky rounded capitals in `logo-red` with a heavy black outline and a ™. It sits in a flat `logo-yellow` rectangle with the subtitle under it. Use the vector files in the **Logo** group: `boofo-logo-panel.svg` (on its yellow panel), `boofo-logo-lockup.svg` (wordmark and subtitle, no background) or `boofo-wordmark.svg` (BOOFO alone). Put them on a light ground only, since the black outline disappears on dark ones. Never retype the wordmark in a font, stretch it or recolor it.
 
 ## Reference images
 

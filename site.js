@@ -2,7 +2,7 @@
 (function () {
   var IMG = 'images/';
   // bump BUILD (and the ?v= on site.js in index.html) after editing, so browsers fetch fresh copies
-  var BUILD = '2';
+  var BUILD = '4';
   var V = {}, USAGE = {}, PASSES_HTML = '';
   var $ = function (id) { return document.getElementById(id); };
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
@@ -59,7 +59,7 @@
     ['Mouth', [['boofo-mouth', 'Inside of mouth'], ['boofo-tongue', 'Tongue'], ['boofo-tongue-light', 'Tongue tip']]]];
   var POSES = [['boofo-04-cover-happy-front.jpg', 'Happy, front (cover)'], ['boofo-08-startled-jumping.jpg', 'Startled, jumping back (p. 24)'],
     ['boofo-06-worried-front.jpg', 'Worried (p. 20)'], ['boofo-09-sitting-sad.jpg', 'Sad, sitting (p. 27)'], ['boofo-07-barking-angry.jpg', 'Barking, angry (p. 13)'],
-    ['boofo-02-walking-profile.jpg', 'Walking, profile (p. 25)'], ['boofo-03-head-profile-ears-flying.jpg', 'Running, ears flying (p. 25)'],
+    ['boofo-02-walking-profile.jpg', 'Walking, profile (p. 25)'], ['boofo-03-swimming-ears-out.jpg', 'Swimming, ears stretched out (p. 25)'],
     ['boofo-11-running-with-list.jpg', 'Running with the list (p. 32)'], ['boofo-10-carrying-letters.jpg', 'Carrying letters (p. 29)'],
     ['boofo-05-tumble-paw-pads.jpg', 'Tumbling, pads up (p. 12)'], ['boofo-01-workbench-three-quarter.jpg', 'Busy helper (p. 28)'],
     ['boofo-12-asleep-basket.jpg', 'Asleep in basket (p. 35)'], ['boofo-13-asleep-quilt-vignette.jpg', 'Asleep, vignette (p. 7)']];
