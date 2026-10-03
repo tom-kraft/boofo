@@ -14,4 +14,4 @@ A website that sets out how *Boofo: The Dog That Goes Where Santa Goes* (2014, i
 
 Settings → Pages → Build and deployment → Source: **Deploy from a branch**, Branch: **main**, folder **/ (root)**. The site appears at `https://tom-kraft.github.io/boofo/`.
 
-© 2014-2026 Joseph P. King and Kathleen V. King.
+Boofo™ and all related characters were created by Joseph P. King and Kathleen V. King, with illustrations by Dick Dugan. © 2014-2026 Joseph P. King and Kathleen V. King.
