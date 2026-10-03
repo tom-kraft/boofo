@@ -1,6 +1,8 @@
 // Boofo design system site: builds every section from tokens.json and the content/*.md files.
 (function () {
   var IMG = 'images/';
+  // bump BUILD (and the ?v= on site.js in index.html) after editing, so browsers fetch fresh copies
+  var BUILD = '2';
   var V = {}, USAGE = {}, PASSES_HTML = '';
   var $ = function (id) { return document.getElementById(id); };
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
@@ -138,7 +140,7 @@
   }
   function loadMarkdown() {
     document.querySelectorAll('[data-md]').forEach(function (el) {
-      fetch(el.getAttribute('data-md')).then(function (r) { return r.text(); }).then(function (txt) {
+      fetch(el.getAttribute('data-md') + '?v=' + BUILD).then(function (r) { return r.text(); }).then(function (txt) {
         el.innerHTML = window.marked ? window.marked.parse(txt) : '<pre>' + esc(txt) + '</pre>';
         decorate(el);
         var after = el.getAttribute('data-after');
@@ -177,7 +179,7 @@
     [].forEach.call(document.querySelectorAll('main section'), function (s) { io.observe(s); });
   }
 
-  fetch('tokens.json').then(function (r) { return r.json(); }).then(render).catch(function () {
+  fetch('tokens.json?v=' + BUILD).then(function (r) { return r.json(); }).then(render).catch(function () {
     document.querySelector('main').insertAdjacentHTML('afterbegin', '<p>Could not load tokens.json.</p>');
   });
 })();

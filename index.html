@@ -42,10 +42,10 @@ nav.bar a.on{border-bottom-color:var(--yellow);color:var(--yellow)}
 /* sections */
 section{padding:64px 0;border-bottom:1px solid var(--shade)}
 section:last-of-type{border-bottom:0}
-.sec-head{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:baseline;margin-bottom:32px}
-.sec-head .num{font-family:var(--display);font-size:14px;color:var(--coat);grid-row:1}
-section h2.sec{font-family:var(--display);font-size:clamp(28px,4vw,42px);line-height:1.05;margin:0;grid-column:2}
-section p.intro{font-family:var(--book);font-size:18px;color:var(--muted);margin:6px 0 0;max-width:68ch;grid-column:2}
+.sec-head{margin-bottom:32px}
+.sec-head .num{display:block;font-family:var(--display);font-size:13px;letter-spacing:.08em;color:var(--coat);margin-bottom:6px}
+section h2.sec{font-family:var(--display);font-size:clamp(28px,4vw,42px);line-height:1.05;margin:0}
+section p.intro{font-family:var(--book);font-size:18px;color:var(--muted);margin:8px 0 0;max-width:68ch}
 
 /* markdown */
 .md{font-family:var(--book);font-size:18px;line-height:1.65;max-width:72ch}
@@ -138,7 +138,6 @@ footer a{color:var(--yellow)}
  .srow{grid-template-columns:repeat(4,1fr)}.srow b{grid-column:1/-1}
  .wrap{padding:0 16px}
  section{padding:44px 0}
- .sec-head{grid-template-columns:1fr}.sec-head .num,section h2.sec,section p.intro{grid-column:1}
  .md{font-size:17px}
  .poses{grid-template-columns:repeat(2,1fr);gap:14px}
  .chips{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px}
@@ -149,7 +148,7 @@ footer a{color:var(--yellow)}
 <a class="skip" href="#main">Skip to content</a>
 <header class="top"><div class="wrap hero">
  <div>
-  <img class="logo" src="images/Logo/boofo-logo-panel.jpg" alt="BOOFO: The Dog That Goes Where Santa Goes" width="1104" height="422">
+  <img class="logo" src="images/Logo/boofo-logo-panel.jpg?v=2" alt="BOOFO: The Dog That Goes Where Santa Goes" width="1104" height="422">
   <span class="kicker">Design system · coloring book two</span>
   <p class="lede">How book one looks, written down so the line art for book two can be colored to match. Every color here was sampled from the printed book.</p>
   <ul class="stats" aria-label="At a glance">
@@ -186,6 +185,6 @@ footer a{color:var(--yellow)}
 </div></footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
-<script src="site.js"></script>
+<script src="site.js?v=2"></script>
 </body>
 </html>
