@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boofo Design System</title>
+<meta name="description" content="Palette, character guide and coloring method from Boofo: The Dog That Goes Where Santa Goes, for coloring book two.">
+<style>
+:root{--ink:#151012;--muted:#5b5458;--paper:#fdfcf8;--shade:#d4d6dd;--yellow:#ffff00;--red:#fa2619;--coat:#9e4e30;--wash:#fcf3b8;
+--book:Georgia,"Times New Roman",serif;--display:"Arial Black","Helvetica Neue",Helvetica,Arial,sans-serif;--sans:"Helvetica Neue",Helvetica,Arial,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit}
+header.top{background:var(--yellow);border-bottom:3px solid var(--ink)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:28px;align-items:center;padding:28px 0}
+.hero h1{font-family:var(--display);font-size:clamp(44px,8vw,96px);line-height:.92;margin:0;color:var(--red);-webkit-text-stroke:2px var(--ink);letter-spacing:-1px}
+.hero .sub{font-family:var(--display);font-size:clamp(15px,2vw,22px);line-height:1.15;margin:10px 0 0;text-transform:uppercase}
+.hero p.lede{font-family:var(--book);font-size:17px;margin:16px 0 0;max-width:46ch}
+.hero .art{border:3px solid var(--ink);background:var(--paper)}
+nav.bar{position:sticky;top:0;z-index:5;background:var(--ink)}
+nav.bar ul{list-style:none;margin:0 auto;padding:0 12px;display:flex;gap:2px;overflow-x:auto;max-width:1120px}
+nav.bar a{display:block;padding:14px 12px;color:var(--paper);text-decoration:none;font-weight:700;font-size:14px;white-space:nowrap}
+nav.bar a:hover,nav.bar a:focus-visible{background:var(--coat);outline:none}
+section{padding:48px 0;border-bottom:1px solid var(--shade)}
+section h2.sec{font-family:var(--display);font-size:clamp(28px,4vw,40px);line-height:1.05;margin:0 0 6px}
+section p.intro{font-family:var(--book);font-size:18px;color:var(--muted);margin:0 0 28px;max-width:70ch}
+.md{font-family:var(--book);font-size:18px;line-height:1.6;max-width:76ch}
+.md h1{display:none}
+.md h2{font-family:var(--display);font-size:26px;line-height:1.15;margin:40px 0 10px}
+.md h3{font-family:var(--sans);font-size:15px;text-transform:uppercase;letter-spacing:.06em;margin:28px 0 8px}
+.md table{border-collapse:collapse;font-family:var(--sans);font-size:14px;margin:16px 0;width:100%;display:block;overflow-x:auto}
+.md th,.md td{border:1px solid var(--shade);padding:8px 10px;text-align:left;vertical-align:top}
+.md th{background:var(--wash)}
+.md code,.tok{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.82em;background:#f1eee6;padding:1px 5px;border-radius:3px;white-space:nowrap}
+.dot{display:inline-block;width:.8em;height:.8em;border:1px solid var(--ink);border-radius:50%;margin-right:4px;vertical-align:-1px}
+.md ul{padding-left:22px}
+.chips{display:flex;flex-wrap:wrap;gap:12px}
+.chip{width:128px;font-size:12px;line-height:1.3}
+.chip .sw{height:52px;border:1px solid var(--ink);margin-bottom:6px}
+.chip b{display:block;word-break:break-word}
+.chip code{display:block;font-family:ui-monospace,Menlo,monospace;font-size:11px}
+.chip span{display:block;color:var(--muted)}
+.chip button{all:unset;cursor:pointer;display:block;width:100%}
+.chip button:focus-visible .sw{outline:3px solid var(--red);outline-offset:2px}
+.grp{margin:0 0 22px}
+.grp h3{font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin:0 0 10px}
+.char{display:grid;grid-template-columns:minmax(200px,300px) 1fr;gap:28px;padding:28px 0;border-top:1px solid var(--shade)}
+.char h3.name{font-family:var(--display);font-size:24px;margin:0 0 4px}
+.char p{margin:0 0 18px;font-family:var(--book);font-size:16px;max-width:60ch}
+.char figure,.scene figure{margin:0}
+.char img,.scene img,.pose img{border:1px solid var(--shade);background:#fff}
+figcaption{font-size:12px;color:var(--muted);margin-top:6px}
+.poses{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:18px}
+.pose .im{aspect-ratio:1/1;overflow:hidden;border:1px solid var(--shade);background:#fff}
+.pose .im img{width:100%;height:100%;object-fit:cover;border:0}
+.pose a{text-decoration:none}
+.scene{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:22px 0;border-top:1px solid var(--shade)}
+.scene img{aspect-ratio:3/4;object-fit:cover;width:100%}
+.passes{display:grid;gap:14px;max-width:820px}
+.srow{display:grid;grid-template-columns:170px repeat(4,1fr);gap:10px;align-items:center}
+.srow b{font-size:14px}
+.sc{text-align:center;font-size:12px;color:var(--muted)}
+.st{height:72px;border:3px solid var(--ink);display:flex;flex-direction:column;margin-bottom:4px}
+.st i{display:block}
+.type-row{display:grid;grid-template-columns:200px 1fr;gap:20px;padding:16px 0;border-top:1px solid var(--shade);align-items:baseline}
+.type-row .meta{font-size:13px;color:var(--muted)}
+.type-row .meta b{display:block;color:var(--ink);font-size:14px}
+.missing{display:flex;align-items:center;justify-content:center;aspect-ratio:1/1;background:#f1eee6;color:var(--muted);font-size:12px;text-align:center;padding:8px}
+footer{padding:36px 0 60px;font-size:13px;color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:4px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+@media (max-width:760px){
+ .hero,.char,.scene,.type-row{grid-template-columns:1fr}
+ .srow{grid-template-columns:1fr 1fr 1fr 1fr}.srow b{grid-column:1/-1}
+ .scene img{aspect-ratio:auto}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap hero">
+ <div>
+  <h1>BOOFO</h1>
+  <p class="sub">The dog that goes where Santa goes · design system</p>
+  <p class="lede">How book one looks, written down so the line art for book two can be colored to match. Every color here was sampled from the printed book.</p>
+ </div>
+ <div class="art"><img src="images/Boofo/boofo-01-workbench-three-quarter.jpg" alt="Boofo standing on a workbench with a glue pot on his head, from page 28 of book one" onerror="this.parentNode.style.display='none'"></div>
+</div></header>
+<nav class="bar" aria-label="Sections"><ul>
+ <li><a href="#overview">Overview</a></li>
+ <li><a href="#boofo">Boofo</a></li>
+ <li><a href="#poses">Poses</a></li>
+ <li><a href="#cast">Cast</a></li>
+ <li><a href="#guide">Character guide</a></li>
+ <li><a href="#coloring">Coloring</a></li>
+ <li><a href="#scenes">Scenes</a></li>
+ <li><a href="#palette">Palette</a></li>
+ <li><a href="#type">Type</a></li>
+</ul></nav>
+<main class="wrap">
+ <section id="overview"><h2 class="sec">Overview</h2><p class="intro">The look, the line, the color rules and the type.</p><div class="md" data-md="content/overview.md"></div></section>
+ <section id="boofo"><h2 class="sec">Boofo: color model</h2><p class="intro">Chestnut coat in base, shadow and light; black ink ears and tuft; white markings on the muzzle, cheeks, bib, belly, four paws and tail tip.</p><div id="boofo-card"></div></section>
+ <section id="poses"><h2 class="sec">Expressions and poses</h2><p class="intro">Every Boofo pose in book one. The brows and ears do the acting. Click a picture to open the full crop.</p><div class="poses" id="poses-grid"></div></section>
+ <section id="cast"><h2 class="sec">Cast color models</h2><p class="intro">Santa, the three elf brothers and the reindeer.</p><div id="cast-cards"></div></section>
+ <section id="guide"><h2 class="sec">Character guide</h2><p class="intro">Build, personality and coloring notes for every character, with Boofo in the most detail.</p><div class="md" data-md="content/characters.md"></div></section>
+ <section id="coloring"><h2 class="sec">Coloring the line art</h2><p class="intro">The passes in order, palettes by setting, and a checklist for each page.</p><div class="passes" id="passes"></div><div class="md" data-md="content/coloring.md"></div></section>
+ <section id="scenes"><h2 class="sec">Scene palettes</h2><p class="intro">Background colors for each lighting condition. Backgrounds stay paler than the characters and fade to white at the edges and behind text.</p><div id="scene-rows"></div></section>
+ <section id="palette"><h2 class="sec">Full palette</h2><p class="intro">Every color, grouped by who or what wears it. Click a swatch to copy its hex value.</p><div id="palette-groups"></div></section>
+ <section id="type"><h2 class="sec">Typography</h2><p class="intro">Type styles from book one, in units of the 768 × 1024 page.</p><div id="type-rows"></div></section>
+</main>
+<footer class="wrap">Reference images and illustrations from <i>Boofo: The Dog That Goes Where Santa Goes</i> © 2014 Dick Dugan; text © 2014 Joseph P. King. Colors sampled from 150-dpi renders of the printed book, so treat them as close guides rather than exact matches to the original art.</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="site.js"></script>
+</body>
+</html>
