@@ -5,6 +5,7 @@ A website that sets out how *Boofo: The Dog That Goes Where Santa Goes* (2014, i
 ## What's here
 
 - `index.html` and `site.js`: the site. It builds every section from the files below.
+- `book-two.html`: the illustration list for book two, *Boofo's First Vacation* (29 pages), for colorists quoting the job.
 - `tokens.json`: all 79 colors, with usage notes, plus the type styles and measurements. Edit a color here and the site updates.
 - `content/`: the written guides (`overview.md`, `characters.md`, `coloring.md`).
 - `images/`: reference crops from book one (`Boofo/`, `Cast/`, `Scenes/`, `Logo/`).
