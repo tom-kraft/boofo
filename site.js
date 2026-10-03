@@ -1,7 +1,7 @@
 // Boofo design system site: builds every section from tokens.json and the content/*.md files.
 (function () {
   var IMG = 'images/';
-  var V = {}, USAGE = {};
+  var V = {}, USAGE = {}, PASSES_HTML = '';
   var $ = function (id) { return document.getElementById(id); };
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
   function hex(n, d) {
@@ -10,7 +10,7 @@
     return m && (d || 0) < 8 ? hex(m[1], (d || 0) + 1) : v;
   }
   function img(path, alt, cls) {
-    return '<img loading="lazy" src="' + IMG + path + '" alt="' + esc(alt) + '"' + (cls ? ' class="' + cls + '"' : '') +
+    return '<img loading="lazy" decoding="async" src="' + IMG + path + '" alt="' + esc(alt) + '"' + (cls ? ' class="' + cls + '"' : '') +
       ' onerror="this.outerHTML=\'<div class=missing>Image not uploaded yet: ' + esc(path) + '</div>\'">';
   }
   function chip(t) {
@@ -81,32 +81,34 @@
     tokens.color.tokens.forEach(function (t) { V[t.name] = t.value; USAGE[t.name] = t.usage || ''; });
     var names = tokens.color.tokens.map(function (t) { return t.name; });
 
-    $('boofo-card').innerHTML = '<div class="char" style="border-top:0;padding-top:0"><div>' +
-      '<figure>' + img('Boofo/boofo-01-workbench-three-quarter.jpg', 'Boofo on the workbench, page 28') + '<figcaption>Page 28: three-quarter view, the full coat, bib and paw markings.</figcaption></figure>' +
-      '<figure style="margin-top:16px">' + img('Boofo/boofo-04-cover-happy-front.jpg', 'Boofo grinning on the cover') + '<figcaption>Cover: front view, open mouth and tongue.</figcaption></figure>' +
+    $('boofo-card').innerHTML = '<div class="char"><div class="figs">' +
+      '<figure><div class="frame">' + img('Boofo/boofo-01-workbench-three-quarter.jpg', 'Boofo on the workbench, page 28') + '</div><figcaption>Page 28: three-quarter view, the full coat, bib and paw markings.</figcaption></figure>' +
+      '<figure><div class="frame">' + img('Boofo/boofo-04-cover-happy-front.jpg', 'Boofo grinning on the cover') + '</div><figcaption>Cover: front view, open mouth and tongue.</figcaption></figure>' +
       '</div><div>' + BOOFO.map(function (g) { return grp(g[0], g[1]); }).join('') + '</div></div>';
 
     $('poses-grid').innerHTML = POSES.map(function (p) {
-      return '<figure class="pose"><a href="' + IMG + 'Boofo/' + p[0] + '" target="_blank" rel="noopener"><div class="im">' + img('Boofo/' + p[0], 'Boofo: ' + p[1]) + '</div></a><figcaption>' + esc(p[1]) + '</figcaption></figure>';
+      var m = /^(.*?)\s*\((.+)\)$/.exec(p[1]), title = m ? m[1] : p[1], where = m ? m[2] : '';
+      return '<figure class="pose"><a href="' + IMG + 'Boofo/' + p[0] + '" target="_blank" rel="noopener" aria-label="Open full crop: ' + esc(p[1]) + '"><div class="im">' + img('Boofo/' + p[0], 'Boofo: ' + p[1]) + '</div></a>' +
+        '<figcaption>' + esc(title) + (where ? '<small>' + esc(where) + '</small>' : '') + '</figcaption></figure>';
     }).join('');
 
     $('cast-cards').innerHTML = CAST.map(function (c) {
-      return '<div class="char"><figure>' + img(c.img, c.name + ' reference from book one') + '<figcaption>' + esc(c.cap) + '</figcaption></figure><div>' +
-        '<h3 class="name">' + esc(c.name) + '</h3><p>' + esc(c.blurb) + '</p>' + c.groups.map(function (g) { return grp(g[0], g[1]); }).join('') + '</div></div>';
+      return '<div class="char"><div class="figs"><figure><div class="frame">' + img(c.img, c.name + ' reference from book one') + '</div><figcaption>' + esc(c.cap) + '</figcaption></figure></div><div>' +
+        '<h3 class="name">' + esc(c.name) + '</h3><p class="blurb">' + esc(c.blurb) + '</p>' + c.groups.map(function (g) { return grp(g[0], g[1]); }).join('') + '</div></div>';
     }).join('');
 
     $('scene-rows').innerHTML = SCENES.map(function (s) {
-      return '<div class="scene"><figure><a href="' + IMG + 'Scenes/' + s[0] + '" target="_blank" rel="noopener">' + img('Scenes/' + s[0], s[1] + ' reference page') + '</a></figure><div>' + grp(s[1], s[2]) + '</div></div>';
+      return '<div class="scene"><figure><a class="frame" style="display:block" href="' + IMG + 'Scenes/' + s[0] + '" target="_blank" rel="noopener">' + img('Scenes/' + s[0], s[1] + ' reference page') + '</a></figure><div>' + grp(s[1], s[2]) + '</div></div>';
     }).join('');
 
     var cells = function (b, sh, dp, lt) {
       return [['Flat', [[b, 100]]], ['+ Shadow', [[b, 55], [sh, 45]]], ['+ Deep', [[b, 55], [sh, 37], [dp, 8]]], ['+ Light', [[lt, 22], [b, 33], [sh, 37], [dp, 8]]]];
     };
-    $('passes').innerHTML = PASSES.map(function (p) {
+    PASSES_HTML = '<div class="passes" role="group" aria-label="How each region builds up"><div class="cap">How each region builds up, top of the strip = lit side</div>' + PASSES.map(function (p) {
       return '<div class="srow"><b>' + esc(p[4]) + '</b>' + cells(p[0], p[1], p[2], p[3]).map(function (c) {
         return '<div class="sc"><div class="st">' + c[1].map(function (x) { return '<i style="background:' + hex(x[0]) + ';height:' + x[1] + '%"></i>'; }).join('') + '</div>' + c[0] + '</div>';
       }).join('') + '</div>';
-    }).join('');
+    }).join('') + '</div>';
 
     var used = {};
     $('palette-groups').innerHTML = PALETTE.map(function (g) {
@@ -120,7 +122,7 @@
       return g.styles.map(function (s) {
         var family = fam[s.family || g.family];
         var style = 'font-family:' + family + ';font-size:' + s.fontSize + ';line-height:' + s.lineHeight + ';font-weight:' + s.fontWeight + (s.fontStyle ? ';font-style:' + s.fontStyle : '');
-        return '<div class="type-row"><div class="meta"><b>' + esc(s.name) + '</b>' + esc(s.fontSize + ' / ' + s.lineHeight + ' · ' + s.fontWeight) + '<br>' + esc(s.usage || '') + '</div><div style="' + esc(style) + '">' + esc(s.sample || s.name) + '</div></div>';
+        return '<div class="type-row"><div class="meta"><b>' + esc(s.name) + '</b>' + esc(s.fontSize + ' / ' + s.lineHeight + ' · ' + s.fontWeight) + '<br>' + esc(s.usage || '') + '</div><div class="spec" style="' + esc(style) + '">' + esc(s.sample || s.name) + '</div></div>';
       }).join('');
     }).join('');
 
@@ -139,6 +141,13 @@
       fetch(el.getAttribute('data-md')).then(function (r) { return r.text(); }).then(function (txt) {
         el.innerHTML = window.marked ? window.marked.parse(txt) : '<pre>' + esc(txt) + '</pre>';
         decorate(el);
+        var after = el.getAttribute('data-after');
+        if (after && PASSES_HTML) {
+          var h = [].filter.call(el.querySelectorAll('h2'), function (x) { return x.textContent.trim() === after; })[0];
+          var list = h && h.nextElementSibling;
+          while (list && !/^(OL|UL)$/.test(list.tagName) && list.tagName !== 'H2') list = list.nextElementSibling;
+          if (list && list.tagName !== 'H2') list.insertAdjacentHTML('afterend', PASSES_HTML); else el.insertAdjacentHTML('afterbegin', PASSES_HTML);
+        }
       }).catch(function () { el.textContent = 'Could not load ' + el.getAttribute('data-md'); });
     });
   }
@@ -150,6 +159,23 @@
     var done = function () { t.textContent = 'Copied ' + v; t.classList.add('on'); setTimeout(function () { t.classList.remove('on'); }, 1400); };
     if (navigator.clipboard) navigator.clipboard.writeText(v).then(done, done); else done();
   });
+
+  // highlight the nav link for the section in view
+  var links = {};
+  [].forEach.call(document.querySelectorAll('nav.bar a'), function (a) { links[a.getAttribute('href').slice(1)] = a; });
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        Object.keys(links).forEach(function (k) { links[k].classList.toggle('on', k === e.target.id); });
+        var a = links[e.target.id];
+        if (a && a.scrollIntoView && a.parentNode.parentNode.scrollWidth > a.parentNode.parentNode.clientWidth) {
+          var ul = a.parentNode.parentNode; ul.scrollLeft = a.offsetLeft - 24;
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    [].forEach.call(document.querySelectorAll('main section'), function (s) { io.observe(s); });
+  }
 
   fetch('tokens.json').then(function (r) { return r.json(); }).then(render).catch(function () {
     document.querySelector('main').insertAdjacentHTML('afterbegin', '<p>Could not load tokens.json.</p>');
